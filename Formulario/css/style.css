@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root{
+    --font: 'Open Sans', sans-serif;
+    --clip: polygon(50% 0, 100% 0%, 100% 100%, 0% 100%);
+    --contact-colums: repeat(8,1fr);
+    --contact-rows: 1fr;
+}
+
+body{
+    background: rgba(235, 226, 226, 0.747);
+    font-family: var(--font);
+
+    
+}
+
+.contact{
+    min-height: 600px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: var(--contact-colums);
+    grid-template-rows: var(--contact-rows);
+}
+
+.contact__picture{
+    grid-column: 5/-1;
+    grid-row: 1/-1;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.contact__picture::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    background: cornflowerblue;
+    clip-path: var(--clip);
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.contact__img{
+    width: 90%;
+}
+
+.contact__form{
+    grid-column: 1/5;
+    grid-row: 1/-1;
+    place-self: center;
+    display: grid;
+    width: 70%;
+    gap: 30px;
+    grid-auto-rows: max-content;
+}
+
+.contact__title{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.contact__title::after{
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: cornflowerblue;
+    margin: 10px 0;
+}
+
+.contact__input{
+    margin: 10px 0;
+    padding: 10px 0;
+    font-family: var(--font);
+    border: none;
+    border: 1px solid gray;
+    border-radius: 7px;
+}
+
+.contact__input--area{
+    resize: none;
+    padding: 0 0 30px 0;
+}
+
+.cta{
+    padding: 10px 30px;
+    color: #fff;
+    background: cornflowerblue;
+    border-radius: 12px;
+    width: 150px;
+    margin:0 auto;
+    box-shadow: 3px 3px 13px gray;
+}
+
+
+@media screen and (max-width: 768px){
+    :root{
+        --contact-colums: 1fr;
+        --contact-rows: max-content 1fr;
+        --clip: polygon(0 0, 0% 100%, 100% 0);
+    }
+    .contact__form{
+        grid-column: 1/-1;
+        grid-row: 2/3;
+        padding: 40px 0;
+        max-width: 500px;
+    }
+    .contact__picture{
+        grid-column: 1/-1;
+        grid-row: 1/2;
+        justify-content: center;
+        pad: 20px;
+    }
+
+    .contact__img{
+        max-width: 400px;
+    }
+
+}
